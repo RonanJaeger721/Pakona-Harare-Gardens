@@ -1,0 +1,135 @@
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap');
+@import "tailwindcss";
+
+@theme {
+  --font-bebas: "Bebas Neue", sans-serif;
+  --font-space: "Space Grotesk", sans-serif;
+  --font-sans: "Inter", sans-serif;
+  
+  --color-brand-black: #111111;
+  --color-brand-yellow: #F5B400;
+  --color-brand-light: #FAF9F6;
+  --color-brand-dark-card: #181818;
+  --color-brand-success: #3BB54A;
+  --color-brand-orange: #f97316;
+}
+
+@layer utilities {
+  /* Glassmorphism card utility matching Frosted Glass theme specs */
+  .glass {
+    background: rgba(255, 255, 255, 0.4);
+    backdrop-filter: blur(12px);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+  }
+  
+  .dark-glass {
+    background: rgba(24, 24, 24, 0.85);
+    backdrop-filter: blur(16px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+  }
+
+  .glass-card {
+    background: rgba(24, 24, 24, 0.85);
+    backdrop-filter: blur(16px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+  }
+  
+  .glass-card-light {
+    background: rgba(255, 255, 255, 0.4);
+    backdrop-filter: blur(12px);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+  }
+
+  /* Industrial Edge border accent */
+  .industrial-edge {
+    border-left: 4px solid #F5B400;
+  }
+
+  /* Neon Glow shadows */
+  .neon-glow:hover {
+    box-shadow: 0 0 15px rgba(245, 180, 0, 0.5);
+  }
+
+  /* Textures and details */
+  .concrete-grid {
+    background-size: 40px 40px;
+    background-image: 
+      linear-gradient(to right, rgba(17, 17, 17, 0.03) 1px, transparent 1px),
+      linear-gradient(to bottom, rgba(17, 17, 17, 0.03) 1px, transparent 1px);
+  }
+
+  .concrete-grid-dark {
+    background-size: 40px 40px;
+    background-image: 
+      linear-gradient(to right, rgba(255, 255, 255, 0.02) 1px, transparent 1px),
+      linear-gradient(to bottom, rgba(255, 255, 255, 0.02) 1px, transparent 1px);
+  }
+
+  /* Custom glow effect */
+  .glow-yellow {
+    box-shadow: 0 0 20px rgba(245, 180, 0, 0.45);
+  }
+
+  .glow-yellow-hover:hover {
+    box-shadow: 0 0 30px rgba(245, 180, 0, 0.7);
+  }
+
+  /* Custom text strokes for bold street art typography */
+  .text-stroke-white {
+    -webkit-text-stroke: 1px white;
+    color: transparent;
+  }
+  
+  .text-stroke-black {
+    -webkit-text-stroke: 1px #111111;
+    color: transparent;
+  }
+
+  /* Hide scrollbars but keep functionality */
+  .no-scrollbar::-webkit-scrollbar {
+    display: none;
+  }
+  .no-scrollbar {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+}
+
+/* Base custom styles */
+body {
+  font-family: var(--font-sans);
+  background-color: var(--color-brand-light);
+  color: var(--color-brand-black);
+  overflow-x: hidden;
+  transition: background-color 0.5s ease, color 0.5s ease;
+}
+
+body.dark {
+  background-color: var(--color-brand-black);
+  color: var(--color-brand-light);
+}
+
+/* Custom smooth scroll */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Custom Selection style */
+::selection {
+  background-color: var(--color-brand-yellow);
+  color: var(--color-brand-black);
+}
+
+/* Handshake logo draw animation */
+@keyframes drawStroke {
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+
+.draw-path {
+  stroke-dasharray: 1000;
+  stroke-dashoffset: 1000;
+  animation: drawStroke 2.5s ease-out forwards;
+}
+
